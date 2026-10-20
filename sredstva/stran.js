@@ -1,6 +1,21 @@
 // Misli z razgledom — the few bits that need a script:
-// live dateline, next-issue countdown, biography pop-up, shelf filter.
+// phone menu, live dateline, next-issue countdown, biography pop-up, shelf filter.
 (function () {
+  // Phone menu: the hamburger opens the sections over the whole screen
+  var tgl = document.querySelector('.menu-toggle');
+  if (tgl) {
+    var root = document.documentElement;
+    var meni = function (odprt) {
+      root.classList.toggle('meni-odprt', odprt);
+      tgl.setAttribute('aria-expanded', String(odprt));
+      tgl.setAttribute('aria-label', odprt ? 'Zapri meni' : 'Odpri meni');
+    };
+    tgl.addEventListener('click', function () { meni(!root.classList.contains('meni-odprt')); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') meni(false); });
+    document.querySelectorAll('.site-nav a').forEach(function (a) { a.addEventListener('click', function () { meni(false); }); });
+    window.matchMedia('(min-width: 641px)').addEventListener('change', function (ev) { if (ev.matches) meni(false); });
+  }
+
   // Dateline: day and time in Slovenian, kept live like a printed clock
   var day = document.querySelector('[data-dan]');
   var time = document.querySelector('[data-ura]');
