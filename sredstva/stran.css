@@ -1,0 +1,265 @@
+/* Misli z razgledom — styles for the site, design "Knjiga" (Mitja chose proposal B on 2026-10-19).
+   Tokens come from the design system (design-system/tokens, built into ds.css).
+   Mitja's changes to the DS: no ● markers, no dark block behind the name, no lines or underlines
+   anywhere; parts of the page are separated by space only. */
+
+:root{--gutter:clamp(20px,5vw,var(--page-gutter));--caps:600 11px/1.3 var(--font-display)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--linen-light)}
+a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:9;background:var(--carbon);color:var(--snow);padding:8px 12px;font:700 13px var(--font-label)}
+
+/* ---- wrap ---- */
+.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--gutter)}
+main{display:block}
+.page-main{padding-bottom:var(--space-9)}
+
+/* ---- SiteHeader ---- */
+.site-header{padding-top:14px;padding-bottom:18px}
+.dateline{display:flex;justify-content:space-between;flex-wrap:wrap;column-gap:32px;row-gap:4px;align-items:baseline;padding-bottom:18px;font-family:var(--font-text);font-style:italic;font-size:14px;line-height:1.4;color:var(--ink-3)}
+.dateline span{white-space:nowrap}
+.dateline .time{font-family:var(--font-label);font-style:normal;font-size:13px;font-variant-numeric:tabular-nums;min-width:3em;text-align:right}
+.header-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:24px}
+.name-compact{font-family:var(--font-text);font-size:21px;line-height:1;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+a.name-compact:hover{color:var(--brick)}
+.site-nav{display:flex;gap:4px 22px;flex-wrap:wrap;justify-content:center}
+.site-nav a{font:var(--caps);letter-spacing:.16em;text-transform:uppercase;padding:6px 0 4px;color:var(--ink);transition:color var(--dur-fast) var(--ease-page)}
+.site-nav a:hover,.site-nav a[aria-current]{color:var(--brick)}
+
+/* ---- Wordmark (the name on the front page) ---- */
+.hero{text-align:center;padding-top:clamp(48px,8vw,112px);padding-bottom:clamp(24px,4vw,56px)}
+.masthead{margin:0;font-family:var(--font-text);font-weight:400;font-size:clamp(48px,10vw,132px);line-height:1;letter-spacing:-.025em;color:var(--ink);text-wrap:balance}
+/* the title is marked with a tea-green block, like a highlighter; each line gets its own block */
+.masthead-mark{background:var(--tea-green);padding:0 .05em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.masthead-meta{display:flex;flex-direction:column;align-items:center;margin-top:24px}
+.standfirst{font-family:var(--font-text);font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-2);max-width:40ch;text-wrap:balance}
+
+/* ---- IssuePhoto (only shown when a credited photo is set in stran.json) ---- */
+.issue-photo{margin:48px 0 0;position:relative;text-align:left}
+.issue-photo img{width:100%;height:clamp(320px,42vw,560px);object-fit:cover;filter:var(--photo-filter)}
+.issue-photo figcaption{position:absolute;left:clamp(16px,2.4vw,32px);top:clamp(16px,2.4vw,28px);right:clamp(16px,2.4vw,32px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;font-family:var(--font-text);font-size:15px;line-height:1.35;color:var(--snow);text-shadow:0 1px 12px rgba(37,38,39,.55)}
+.issue-photo .kicker{color:var(--snow)}
+.issue-photo .note{font-style:italic;max-width:36ch;margin-top:2px}
+.issue-photo .credit{text-align:right}
+
+/* ---- SectionLabel + Kicker ---- */
+.section{padding-top:104px}
+.section:last-child{padding-bottom:120px}
+.section-label{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:40px}
+.section-label h2{margin:0;font:var(--caps);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.section-label p{font-family:var(--font-text);font-style:italic;font-size:18px;line-height:1.3;color:var(--ink-3);max-width:30ch;text-wrap:balance}
+.kicker{font:var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---- links that act as buttons: spaced caps in amaranth, no underline ---- */
+.btn-row{display:flex;flex-wrap:wrap;gap:12px 28px}
+.btn{display:inline-block;font:var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--brick);transition:color var(--dur-fast) var(--ease-page)}
+.btn:hover{color:var(--ink)}
+
+/* ---- headings shared by teasers (serif) ---- */
+.h-feature,.h-story,.page-title,.shelf-item h3,.author-quote,.pull-quote blockquote,.essay-body h2{font-family:var(--font-text);font-weight:400;letter-spacing:-.015em;color:var(--ink)}
+.h-feature{font-size:var(--fs-display-2);line-height:1.06;margin:14px 0 16px;overflow-wrap:break-word}
+.h-feature a,.h-story a,.shelf-item h3 a{color:inherit}
+.h-feature a:hover,.h-story a:hover,.shelf-item h3 a:hover{color:var(--brick)}
+.copy{font-family:var(--font-text);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:46ch}
+.copy+.btn-row,.copy+.btn{margin-top:22px}
+
+/* ---- BookFeature + BookCover ---- */
+/* the flat cover as a standing book: turned a little, spine on the left (colour per book), shadow below */
+.book-cover{--w:180px;--depth:20px;--spine:var(--ink-3);display:block;position:relative;width:var(--w);margin-left:calc(var(--depth) * .5);transform:perspective(1600px) rotateY(24deg);transform-style:preserve-3d}
+.book-cover img{display:block;width:100%;height:auto;box-shadow:var(--shadow-book)}
+.book-cover::after{content:"";position:absolute;inset:0;pointer-events:none;transform:translateZ(.1px);background:linear-gradient(90deg,rgba(0,0,0,.22) 0,rgba(255,255,255,.28) 1.4%,rgba(0,0,0,.1) 3%,rgba(255,255,255,.1) 4.5%,rgba(0,0,0,0) 8%),linear-gradient(90deg,rgba(255,255,255,0) 60%,rgba(0,0,0,.06))}
+.book-spine{position:absolute;top:0;left:0;width:var(--depth);height:100%;transform-origin:left center;transform:rotateY(90deg);background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(0,0,0,.06) 45%,rgba(0,0,0,.22)),var(--spine)}
+.book-feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:start}
+.book-feature .book-cover{--w:clamp(120px,13vw,160px);--depth:16px}
+.book-feature .text{container-type:inline-size}
+/* the title must fit its column (the UI kit let "Boguizanogu" overflow) */
+.book-feature .h-feature{font-size:min(var(--fs-display-2),16cqi)}
+
+/* ---- StoryTeaser ---- */
+.h-story{font-size:clamp(36px,4.2vw,54px);line-height:1.06;margin:14px 0 18px;text-wrap:balance}
+.h-story--md{font-size:clamp(30px,3.2vw,42px)}
+.story-teaser .copy{font-size:18px}
+
+/* ---- home: Danes v kavarni ---- */
+.today{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:96px}
+
+/* ---- ProjectTeaser ---- */
+.project{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end;scroll-margin-top:24px}
+.project img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--photo-filter)}
+.project-list{display:grid;gap:96px}
+
+/* ---- Walking the Myth: the project band on the home page and the project page ---- */
+.project-band{background:var(--soft-linen);margin-top:104px}
+.project-band .section{padding-top:88px}
+.project-band .section:last-child{padding-bottom:104px}
+.project-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:56px;align-items:end;padding-top:clamp(40px,6vw,72px)}
+.project-photo{margin:0}
+.project-head img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--photo-filter)}
+.project-photo figcaption{margin-top:10px;font-family:var(--font-text);font-style:italic;font-size:14px;color:var(--ink-3)}
+.project-intro .page-standfirst{max-width:40ch}
+
+/* timeline without lines: the year sits in the left column and stays in view while you scroll */
+.timeline{list-style:none;margin:0;padding:24px 0 0;display:grid;gap:88px}
+.tl-item{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:48px;align-items:start}
+.tl-when{position:sticky;top:24px}
+.tl-year{display:block;font-family:var(--font-text);font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.tl-date{display:block;margin-top:10px;font:var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.tl-title{font-family:var(--font-text);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:12px 0 14px}
+.tl-title a{color:inherit}
+.tl-title a:hover{color:var(--brick)}
+.tl-post .copy+.btn{margin-top:18px}
+.tl-book{padding-top:32px}
+.tl-book .tl-year{color:var(--brick)}
+.book-soon{display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:center}
+.book-cover--blank{--w:clamp(140px,16vw,190px);--depth:18px;--spine:var(--gunmetal-2)}
+.blank-cover{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:2/3;padding:14% 11%;background:var(--gunmetal);color:var(--soft-linen);box-shadow:var(--shadow-book)}
+.blank-author{font:var(--caps);font-size:8px;letter-spacing:.22em;text-transform:uppercase}
+.blank-title{font-family:var(--font-text);font-size:calc(var(--w) * .17);line-height:1.02;letter-spacing:-.015em}
+
+/* ---- ShelfItem ---- */
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
+.shelf--page{gap:64px 32px}
+.shelf-item{display:flex;flex-direction:column;scroll-margin-top:24px}
+.shelf-plate{background:var(--soft-linen);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:18px}
+.shelf-plate img{width:100%;height:100%;object-fit:cover}
+/* a book cover or film poster stands in the middle of the plate, like an object on a shelf */
+.shelf-plate--object img{height:80%;width:auto;max-width:80%;object-fit:contain;box-shadow:var(--shadow-book)}
+/* a licensed photo that may not be cropped: shown whole, like a print laid on the plate */
+.shelf-plate--print img{width:80%;height:auto;box-shadow:var(--shadow-book)}
+/* the credit sits inside the plate's bottom edge, so items stay aligned */
+.shelf-plate{position:relative}
+.shelf-credit{position:absolute;left:12px;right:12px;bottom:8px;margin:0;text-align:center;font-family:var(--font-text);font-style:italic;font-size:12px;line-height:1.3;color:var(--ink-3)}
+.shelf-credit a{color:inherit}
+.shelf-credit a:hover{color:var(--brick)}
+.shelf-item h3{font-size:24px;line-height:1.15;margin:10px 0}
+.shelf-item h3 span{display:block;font-style:italic;font-size:18px;color:var(--ink-3);margin-top:2px}
+.shelf-item .copy{font-size:16px;line-height:1.5;max-width:34ch}
+.shelf-item .btn{align-self:flex-start;margin-top:16px}
+
+/* ---- AuthorBlock ---- */
+.author{display:grid;grid-template-columns:minmax(180px,300px) minmax(0,1fr) auto;gap:56px;align-items:end}
+.author-portrait{width:100%;aspect-ratio:4/5;object-fit:cover;filter:var(--photo-filter-bw)}
+.author-quote{font-size:clamp(26px,2.6vw,34px);line-height:1.2;margin:22px 0 18px;max-width:22ch}
+.author .copy{max-width:50ch}
+.author .btn{margin-top:22px}
+.author .section-label{margin-bottom:0}
+.author-signature{width:180px;mix-blend-mode:multiply}
+
+/* ---- biography: pop-up from "Več o meni", and the same text on the about page ---- */
+.bio-dialog{border:0;padding:0;width:min(720px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;background:var(--linen-light);color:var(--ink)}
+.bio-dialog::backdrop{background:rgba(46,53,50,.5)}
+.bio-dialog[open]{animation:bio-in var(--dur-base) var(--ease-page)}
+@keyframes bio-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bio-dialog[open]{animation:none}}
+html:has(.bio-dialog[open]){overflow:hidden}
+.bio-top{position:sticky;top:0;display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:24px clamp(24px,5vw,56px) 16px;background:var(--linen-light)}
+.bio-label{font:var(--caps);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.bio-close{border:0;background:none;padding:0;cursor:pointer}
+.bio-body{padding:8px clamp(24px,5vw,56px) clamp(32px,5vw,56px)}
+.bio-title{margin:0 0 24px;font-family:var(--font-text);font-weight:400;font-size:clamp(36px,4.4vw,52px);line-height:1.05;letter-spacing:-.015em;color:var(--ink)}
+.bio-text p{font-family:var(--font-text);font-size:18px;line-height:1.6;color:var(--ink-2);margin:0 0 1em;max-width:58ch}
+.bio-text p:last-child{margin-bottom:0}
+.about-bio{margin-top:72px;max-width:660px}
+
+/* ---- SiteFooter ---- */
+/* the author block sits on a slightly darker paper band, set apart by colour only */
+.author-band{background:var(--soft-linen);padding:80px 0}
+.site-footer{padding-top:96px;padding-bottom:32px}
+.site-footer--plain{padding-top:40px}
+.footer-wordmark{margin:0 0 24px;text-align:center;font-family:var(--font-text);font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.footer-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;font-family:var(--font-label);font-size:13px;color:var(--ink-3)}
+
+/* ---- next issue: the site changes once a month, the footer says when ---- */
+.next-issue{text-align:center;padding-top:112px}
+.next-issue-label{margin:0;font:var(--caps);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.next-issue-when{margin:16px 0 14px;font-family:var(--font-text);font-size:clamp(36px,4.4vw,56px);line-height:1.05;letter-spacing:-.015em;color:var(--ink)}
+.next-issue-note{margin:0 auto;max-width:46ch;font-family:var(--font-text);font-style:italic;font-size:17px;line-height:1.5;color:var(--ink-3);text-wrap:balance}
+
+/* ---- page head (section pages) ---- */
+.page-head{padding-top:clamp(40px,6vw,72px);padding-bottom:40px}
+.page-title{font-size:clamp(44px,6.4vw,84px);line-height:1.02;margin:18px 0 20px;max-width:16ch;overflow-wrap:break-word}
+.page-title:first-child{margin-top:0}
+.page-standfirst{font-family:var(--font-text);font-style:italic;font-size:24px;line-height:1.35;color:var(--ink);max-width:36ch;text-wrap:balance}
+.page-head .tags{margin-top:28px}
+.page-body{padding-top:56px}
+.empty{font-family:var(--font-text);font-style:italic;font-size:18px;color:var(--ink-3)}
+
+/* ---- Tag (filter on Polica) ---- */
+.tags{display:flex;gap:4px 22px;flex-wrap:wrap}
+.tag{padding:6px 0 4px;border:0;border-radius:0;background:none;color:var(--ink-3);font:var(--caps);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:color var(--dur-fast) var(--ease-page)}
+.tag:hover{color:var(--ink)}
+.tag[aria-pressed="true"]{color:var(--brick)}
+
+/* ---- essay ---- */
+.essay-head{padding-top:clamp(40px,6vw,72px);padding-bottom:var(--gutter)}
+.essay-title{max-width:16ch;margin:18px 0 24px}
+.essay-meta-row{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:32px}
+.essay-meta-row .page-standfirst{margin:0}
+.essay-meta{font-family:var(--font-label);font-size:13px;line-height:1.5;color:var(--ink-3);text-align:right}
+.essay-image{width:100%;height:clamp(240px,35vw,420px);object-fit:cover;filter:var(--photo-filter)}
+.essay-body{max-width:660px;margin:0 auto;padding-top:56px}
+.essay-body p{font-family:var(--font-text);font-size:19px;line-height:1.6;color:var(--ink-2);margin:0 0 1.1em}
+.essay-body>p:first-child::first-letter{float:left;font-family:var(--font-text);font-size:88px;line-height:.8;margin:8px 12px 0 0;color:var(--ink)}
+.essay-body h2{font-size:var(--fs-display-3);line-height:var(--lh-head);margin:1.6em 0 .6em}
+.pull-quote{margin:64px -8%}
+.pull-quote blockquote{margin:0;font-style:italic;font-size:clamp(28px,3.4vw,44px);line-height:1.18;text-wrap:balance}
+.essay-nav{display:flex;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin-top:56px}
+.story-list{display:grid;gap:80px}
+
+/* ---- book page ---- */
+.book-page{display:grid;grid-template-columns:auto minmax(0,1fr);gap:56px;align-items:start}
+.book-page .book-cover{--w:clamp(160px,22vw,260px);--depth:26px}
+.book-page .copy{font-size:19px;line-height:1.6;max-width:52ch}
+.book-page .copy p+p{margin-top:1em}
+
+/* ---- about page ---- */
+.about .author{grid-template-columns:minmax(200px,360px) minmax(0,1fr) auto}
+
+/* ---- tablet ---- */
+@media (max-width:1100px){
+  .today{grid-template-columns:minmax(0,1fr);gap:80px}
+}
+@media (max-width:960px){
+  .project-head{grid-template-columns:minmax(0,1fr);gap:32px}
+  .shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .author,.about .author{grid-template-columns:minmax(160px,240px) minmax(0,1fr);gap:32px}
+  .author-signature{grid-column:2;width:150px}
+  .pull-quote{margin:48px 0}
+}
+
+/* ---- phone ---- */
+@media (max-width:640px){
+  .header-row{grid-template-columns:minmax(0,1fr);gap:12px}
+  .header-row>div:last-child{display:none}
+  .site-nav{justify-content:flex-start}
+  .dateline .issue-line{display:none}
+  .issue-photo .credit{text-align:left}
+  .section{padding-top:72px}
+  .section:last-child{padding-bottom:88px}
+  .book-feature,.book-page{grid-template-columns:minmax(0,1fr);gap:24px}
+  .project{grid-template-columns:minmax(0,1fr);gap:20px}
+  .project-band{margin-top:72px}
+  .project-band .section{padding-top:64px}
+  .project-band .section:last-child{padding-bottom:72px}
+  .tl-item{grid-template-columns:minmax(0,1fr);gap:8px}
+  .tl-when{position:static;display:flex;align-items:baseline;gap:14px}
+  .tl-year{font-size:36px}
+  .tl-date{margin-top:0}
+  .timeline{gap:64px}
+  .book-soon{grid-template-columns:minmax(0,1fr);gap:28px}
+  .shelf{grid-template-columns:minmax(0,1fr);gap:56px}
+  .author,.about .author{grid-template-columns:minmax(0,1fr);gap:24px}
+  .author-portrait{max-width:280px}
+  .author-signature{grid-column:auto}
+  .essay-meta-row{grid-template-columns:minmax(0,1fr);gap:16px}
+  .essay-meta{text-align:left}
+  .essay-body{padding-top:40px}
+  .essay-body p{font-size:18px}
+  .essay-body>p:first-child::first-letter{font-size:72px}
+  .page-standfirst{font-size:21px}
+  .site-footer{padding-top:72px}
+  .next-issue{padding-top:88px}
+  .author-band{padding:56px 0}
+}
