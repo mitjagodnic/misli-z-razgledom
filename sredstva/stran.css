@@ -31,8 +31,6 @@ a.name-compact:hover{color:var(--brick)}
 /* ---- Wordmark (the name on the front page) ---- */
 .hero{text-align:center;padding-top:clamp(48px,8vw,112px);padding-bottom:clamp(24px,4vw,56px)}
 .masthead{margin:0;font-family:var(--font-text);font-weight:400;font-size:clamp(48px,10vw,132px);line-height:1;letter-spacing:-.025em;color:var(--ink);text-wrap:balance}
-/* the title is marked with a tea-green block, like a highlighter; each line gets its own block */
-.masthead-mark{background:var(--tea-green);padding:0 .05em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .masthead-meta{display:flex;flex-direction:column;align-items:center;margin-top:24px}
 .standfirst{font-family:var(--font-text);font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-2);max-width:40ch;text-wrap:balance}
 
