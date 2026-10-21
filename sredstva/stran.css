@@ -34,6 +34,18 @@ a.name-compact:hover{color:var(--brick)}
 .lang-switch{font:var(--caps);letter-spacing:.16em;padding:6px 0 4px;color:var(--ink-3);transition:color var(--dur-fast) var(--ease-page)}
 .lang-switch:hover{color:var(--brick)}
 .menu-toggle{display:none}
+/* hamburger on every screen: three bars that turn into a cross; the menu opens over the whole screen */
+html.js .site-nav{display:none}
+html.js .header-row{grid-template-columns:minmax(0,1fr) auto}
+html.js .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;padding:10px;border:0;background:none;cursor:pointer;position:relative;z-index:21}
+.menu-toggle span{display:block;height:2px;width:24px;background:var(--ink);transition:transform var(--dur-base) var(--ease-page),opacity var(--dur-fast) var(--ease-page)}
+html.meni-odprt .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+html.meni-odprt .menu-toggle span:nth-child(2){opacity:0}
+html.meni-odprt .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+html.js.meni-odprt{overflow:hidden}
+html.js.meni-odprt .site-nav{display:flex;position:fixed;inset:0;z-index:20;flex-direction:column;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:6px;margin:0;padding:96px max(var(--gutter),calc((100vw - var(--page-max))/2 + var(--gutter))) 64px;background:var(--linen-light);animation:meni-in var(--dur-base) var(--ease-page)}
+html.js.meni-odprt .site-nav a{font-family:var(--font-text);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1.15;letter-spacing:-.015em;text-transform:none;padding:4px 0}
+@keyframes meni-in{from{opacity:0}to{opacity:1}}
 
 /* ---- Wordmark (the name on the front page) ---- */
 .hero{text-align:center;padding-top:clamp(48px,8vw,112px);padding-bottom:clamp(24px,4vw,56px)}
@@ -240,16 +252,6 @@ html:has(.bio-dialog[open]){overflow:hidden}
   .site-nav{justify-content:flex-start}
   html:not(.js) .site-nav{grid-column:1/-1;grid-row:2}
   /* hamburger: three bars that turn into a cross; the menu opens over the whole screen */
-  html.js .site-nav{display:none}
-  html.js .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;padding:10px;border:0;background:none;cursor:pointer;position:relative;z-index:21}
-  .menu-toggle span{display:block;height:2px;width:24px;background:var(--ink);transition:transform var(--dur-base) var(--ease-page),opacity var(--dur-fast) var(--ease-page)}
-  html.meni-odprt .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  html.meni-odprt .menu-toggle span:nth-child(2){opacity:0}
-  html.meni-odprt .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  html.js.meni-odprt{overflow:hidden}
-  html.js.meni-odprt .site-nav{display:flex;position:fixed;inset:0;z-index:20;flex-direction:column;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:6px;margin:0;padding:96px var(--gutter) 64px;background:var(--linen-light);animation:meni-in var(--dur-base) var(--ease-page)}
-  html.js.meni-odprt .site-nav a{font-family:var(--font-text);font-weight:400;font-size:40px;line-height:1.15;letter-spacing:-.015em;text-transform:none;padding:4px 0}
-  @keyframes meni-in{from{opacity:0}to{opacity:1}}
   .dateline .issue-line{display:none}
   .issue-photo .credit{text-align:left}
   .section{padding-top:72px}

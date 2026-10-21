@@ -25,7 +25,6 @@
     tgl.addEventListener('click', function () { meni(!root.classList.contains('meni-odprt')); });
     document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') meni(false); });
     document.querySelectorAll('.site-nav a').forEach(function (a) { a.addEventListener('click', function () { meni(false); }); });
-    window.matchMedia('(min-width: 641px)').addEventListener('change', function (ev) { if (ev.matches) meni(false); });
   }
 
   // Dateline: day and time in the page language, kept live like a printed clock
