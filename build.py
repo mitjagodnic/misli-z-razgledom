@@ -384,11 +384,11 @@ def book_feature(k, R, h='h2'):
 
 
 def story_teaser(o, p, R):
-    """The newest essay or note of a project, labelled with the project's name."""
+    """The newest essay or note of a project, labelled with its kind (Esej / Zapis)."""
     href = R + pot(p['id'], slug=o['slug'])
-    return ('<article class="story-teaser"><div class="kicker">{k}</div><h2 class="h-story"><a href="{h}">{n}</a></h2>'
+    return ('<article class="story-teaser">{k}<h2 class="h-story"><a href="{h}">{n}</a></h2>'
             '<div class="copy">{t}</div>{g}</article>').format(
-        k=e(p['naslov']), h=e(href), n=e(o['naslov']), t=e(o.get('povzetek', '')), g=gumb(t('nadaljuj'), href))
+        k=kicker_objave(o), h=e(href), n=e(o['naslov']), t=e(o.get('povzetek', '')), g=gumb(t('nadaljuj'), href))
 
 
 def project_teaser(p, R):
