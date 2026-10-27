@@ -129,6 +129,7 @@ html.js.meni-odprt .site-nav a{font-family:var(--font-text);font-weight:400;font
 .tl-day{display:block;font-family:var(--font-text);font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
 .tl-soon{display:block;font-family:var(--font-text);font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--brick)}
 .tl-sub{display:block;font-style:italic;font-size:.6em;color:var(--ink-3);margin-top:4px}
+.book-facts{margin-top:40px;font-family:var(--font-label);font-size:13px;line-height:1.7;color:var(--ink-3)}
 .book-list{display:grid;gap:96px;max-width:820px}
 
 /* ---- contact form: filled fields, no borders (DS TextInput) ---- */
