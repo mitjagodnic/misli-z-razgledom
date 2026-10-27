@@ -95,6 +95,7 @@ collections:
       - { name: slika_licenca, label: Licenca fotografije, widget: string, required: false, i18n: duplicate }
       - { name: slika_licenca_url, label: Povezava do licence, widget: string, required: false, i18n: duplicate }
       - { name: osnutek, label: Osnutek (ni prikazano na strani), widget: boolean, default: false, required: false, i18n: duplicate }
+      - { name: prevod_ui, label: Prevod z umetno inteligenco, hint: "Obkljukaj v zavihku EN, ko je angleško besedilo prevedla umetna inteligenca. Pod zapisom se pokaže opomba.", widget: boolean, default: false, required: false, i18n: true }
 
   # ------------------------------------------------------------ KNJIGE
   - name: knjige

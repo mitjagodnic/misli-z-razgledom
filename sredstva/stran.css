@@ -235,6 +235,7 @@ html:has(.bio-dialog[open]){overflow:hidden}
 .essay-body h2{font-size:var(--fs-display-3);line-height:var(--lh-head);margin:1.6em 0 .6em}
 .pull-quote{margin:64px -8%}
 .pull-quote blockquote{margin:0;font-style:italic;font-size:clamp(28px,3.4vw,44px);line-height:1.18;text-wrap:balance}
+.ai-note{margin-top:48px!important;font-family:var(--font-text);font-style:italic;font-size:15px!important;color:var(--ink-3)!important}
 .essay-nav{display:flex;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin-top:56px}
 .story-list{display:grid;gap:80px}
 

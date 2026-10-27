@@ -73,6 +73,7 @@ UI = {
         'zadeva': 'Sporočilo s spletne strani Café Goričan',
         'kontakt_opomba': 'Sporočilo se odpre v vašem e-poštnem programu in gre na {email}.',
         'kontakt_opomba_poslji': 'Odgovorim, ko utegnem.',
+        'prevod_ui': '',
         'branje': lambda m: '%d %s branja' % (m, 'minuta' if m == 1 else 'minute' if m in (2, 3, 4) else 'minut'),
     },
     'en': {
@@ -90,6 +91,7 @@ UI = {
         'zadeva': 'Message from the Café Goričan website',
         'kontakt_opomba': 'The message opens in your email program and goes to {email}.',
         'kontakt_opomba_poslji': 'I reply when I can.',
+        'prevod_ui': 'Translated from Slovenian with the help of artificial intelligence.',
         'branje': lambda m: '%d min read' % m,
     },
 }
@@ -605,8 +607,10 @@ def projekti(v):
                      '<div class="essay-meta-row"><p class="page-standfirst">{u}</p><div class="essay-meta">{m}</div>'
                      '</div></div>').format(pr=e(p['naslov']), vr=e(oznaka(VRSTE[o['vrsta']])), n=e(o['naslov']),
                                             u=e(o.get('povzetek', '')), m=meta)
-            telo = ('<div class="wrap"><article class="essay-body">%s<div class="essay-nav">%s</div>'
-                    '</article></div>') % (o['telo'], gumb(t('nazaj_na') + p['naslov'], R + pot(p['id'])))
+            # an English text translated with AI says so under the text
+            ui = '<p class="ai-note">%s</p>' % t('prevod_ui') if JEZIK == 'en' and o.get('prevod_ui') else ''
+            telo = ('<div class="wrap"><article class="essay-body">%s%s<div class="essay-nav">%s</div>'
+                    '</article></div>') % (o['telo'], ui, gumb(t('nazaj_na') + p['naslov'], R + pot(p['id'])))
             drugi = next((x for x in drugi_p.get('objave', []) if x['id'] == o['id']), None)
             par = {JEZIK: pot(p['id'], slug=o['slug']),
                    drugi_jezik(): pot(p['id'], drugi_jezik(), drugi['slug'] if drugi else '')}
