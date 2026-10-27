@@ -136,6 +136,7 @@ collections:
           - { name: ime, label: Ime avtorja, widget: string, i18n: duplicate }
           - { name: kraj, label: Kraj, widget: string, i18n: duplicate }
           - { name: email, label: E-pošta za kontaktni obrazec, widget: string, i18n: duplicate }
+          - { name: web3forms_kljuc, label: Ključ Web3Forms (pošiljanje obrazca), hint: "Ključ dobiš na web3forms.com za zgornji e-naslov. Brez ključa obrazec odpre e-poštni program obiskovalca.", widget: string, required: false, i18n: duplicate }
           - name: avtor
             label: O avtorju
             widget: object

@@ -72,6 +72,7 @@ UI = {
         'sporocilo': 'Sporočilo', 'poslji': 'Pošlji',
         'zadeva': 'Sporočilo s spletne strani Café Goričan',
         'kontakt_opomba': 'Sporočilo se odpre v vašem e-poštnem programu in gre na {email}.',
+        'kontakt_opomba_poslji': 'Odgovorim, ko utegnem.',
         'branje': lambda m: '%d %s branja' % (m, 'minuta' if m == 1 else 'minute' if m in (2, 3, 4) else 'minut'),
     },
     'en': {
@@ -88,6 +89,7 @@ UI = {
         'sporocilo': 'Message', 'poslji': 'Send',
         'zadeva': 'Message from the Café Goričan website',
         'kontakt_opomba': 'The message opens in your email program and goes to {email}.',
+        'kontakt_opomba_poslji': 'I reply when I can.',
         'branje': lambda m: '%d min read' % m,
     },
 }
@@ -316,17 +318,29 @@ def author_block(s, R, cta=True, z_oznako=True):
 
 
 def contact_form(s):
-    """For now the form opens the visitor's email program, addressed to Uroš (stran.js builds the message)."""
+    """Sends through Web3Forms when the site has a key (vsebina/sl/stran.json → web3forms_kljuc);
+    without one it falls back to the visitor's email program. Spam guards: a hidden field robots fill in,
+    a minimum time on the page (stran.js) and Web3Forms' own filter."""
     email = e(s['email'])
-    return ('<form class="contact-form" action="mailto:{m}" method="post" enctype="text/plain" '
-            'data-kontakt="{m}" data-zadeva="{z}">'
-            '<label><span>{ime}</span><input name="ime" autocomplete="name" required></label>'
-            '<label><span>{ep}</span><input name="eposta" type="email" autocomplete="email" required></label>'
-            '<label class="cf-wide"><span>{sp}</span><textarea name="sporocilo" rows="5" required></textarea></label>'
+    kljuc = s.get('web3forms_kljuc', '').strip()
+    if kljuc:
+        zacetek = ('<form class="contact-form" action="https://api.web3forms.com/submit" method="post" data-web3forms="%s">'
+                   '<input type="hidden" name="access_key" value="%s"><input type="hidden" name="subject" value="%s">'
+                   '<input type="hidden" name="from_name" value="%s">'
+                   '<input type="checkbox" name="botcheck" class="cf-trap" tabindex="-1" autocomplete="off" aria-hidden="true">'
+                   ) % (email, e(kljuc), e(t('zadeva')), e(s['naslov']))
+        opomba = t('kontakt_opomba_poslji')
+    else:
+        zacetek = ('<form class="contact-form" action="mailto:{m}" method="post" enctype="text/plain" '
+                   'data-kontakt="{m}" data-zadeva="{z}">').format(m=email, z=e(t('zadeva')))
+        opomba = t('kontakt_opomba').format(email='<a href="mailto:%s">%s</a>' % (email, email))
+    return (zacetek +
+            '<label><span>{ime}</span><input name="name" autocomplete="name" required></label>'
+            '<label><span>{ep}</span><input name="email" type="email" autocomplete="email" required></label>'
+            '<label class="cf-wide"><span>{sp}</span><textarea name="message" rows="5" required></textarea></label>'
             '<div class="cf-wide cf-end"><button type="submit" class="btn">{poslji}</button>'
-            '<p class="cf-note">{opomba}</p></div></form>').format(
-        m=email, z=e(t('zadeva')), ime=t('ime'), ep=t('eposta'), sp=t('sporocilo'), poslji=t('poslji'),
-        opomba=t('kontakt_opomba').format(email='<a href="mailto:%s">%s</a>' % (email, email)))
+            '<p class="cf-note" data-stanje aria-live="polite">{opomba}</p></div></form>').format(
+        ime=t('ime'), ep=t('eposta'), sp=t('sporocilo'), poslji=t('poslji'), opomba=opomba)
 
 
 def contact_section(s):

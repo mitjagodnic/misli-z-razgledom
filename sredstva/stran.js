@@ -42,17 +42,39 @@
     setInterval(tick, 15000);
   }
 
-  // Contact form: for now it opens the visitor's email program, addressed to Uroš
-  var form = document.querySelector('[data-kontakt]');
-  if (form) {
+  // Contact form. With Web3Forms it sends right here on the page; without it, it opens the email program.
+  var S = en ? { sending: 'Sending …', sent: 'Thank you, your message has been sent.', slow: 'Please take a moment and try again.',
+                 failed: 'The message could not be sent. Please try again or write to ' }
+             : { sending: 'Pošiljam …', sent: 'Hvala, sporočilo je poslano.', slow: 'Počakajte trenutek in poskusite znova.',
+                 failed: 'Sporočila ni bilo mogoče poslati. Poskusite znova ali pišite na ' };
+  var odprto = Date.now();
+  document.querySelectorAll('.contact-form').forEach(function (form) {
+    var stanje = form.querySelector('[data-stanje]');
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var f = form.elements;
-      var body = f.sporocilo.value + '\n\n— ' + f.ime.value + ' (' + f.eposta.value + ')';
-      window.location.href = 'mailto:' + form.getAttribute('data-kontakt') +
-        '?subject=' + encodeURIComponent(form.getAttribute('data-zadeva')) + '&body=' + encodeURIComponent(body);
+      if (form.hasAttribute('data-kontakt')) {
+        var body = f.message.value + '\n\n— ' + f.name.value + ' (' + f.email.value + ')';
+        window.location.href = 'mailto:' + form.getAttribute('data-kontakt') +
+          '?subject=' + encodeURIComponent(form.getAttribute('data-zadeva')) + '&body=' + encodeURIComponent(body);
+        return;
+      }
+      if (f.botcheck && f.botcheck.checked) return;              // a robot filled the hidden field
+      if (Date.now() - odprto < 4000) { stanje.textContent = S.slow; return; }  // sent faster than a person can type
+      var gumb = form.querySelector('button[type=submit]');
+      gumb.disabled = true;
+      stanje.textContent = S.sending;
+      fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d.success) throw new Error(d.message);
+          form.reset();
+          stanje.textContent = S.sent;
+        })
+        .catch(function () { stanje.textContent = S.failed + form.getAttribute('data-web3forms') + '.'; })
+        .then(function () { gumb.disabled = false; });
     });
-  }
+  });
 
   // "Več o meni" opens the biography as a pop-up (Esc, Zapri or a click outside closes it)
   document.querySelectorAll('[data-odpri]').forEach(function (link) {

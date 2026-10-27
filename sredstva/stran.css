@@ -141,6 +141,7 @@ html.js.meni-odprt .site-nav a{font-family:var(--font-text);font-weight:400;font
 .contact-form input:focus,.contact-form textarea:focus{background:var(--dust-grey)}
 .contact-form textarea{resize:vertical}
 .cf-wide{grid-column:1/-1}
+.cf-trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .cf-end{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap}
 .contact-form button.btn{border:0;background:none;padding:0;cursor:pointer}
 .cf-note{font-family:var(--font-text);font-style:italic;font-size:14px;color:var(--ink-3)}
