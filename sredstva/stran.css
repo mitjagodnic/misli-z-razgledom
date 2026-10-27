@@ -121,14 +121,29 @@ html.js.meni-odprt .site-nav a{font-family:var(--font-text);font-weight:400;font
 .timeline{list-style:none;margin:0;padding:24px 0 0;display:grid;gap:88px}
 .tl-item{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:48px;align-items:start}
 .tl-when{position:sticky;top:24px}
-.tl-year{display:block;font-family:var(--font-text);font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
-.tl-date{display:block;margin-top:10px;font:var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
 .tl-title{font-family:var(--font-text);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:12px 0 14px}
 .tl-title a{color:inherit}
 .tl-title a:hover{color:var(--brick)}
 .tl-post .copy+.btn{margin-top:18px}
 .tl-book{padding-top:32px}
-.tl-book .tl-year{color:var(--brick)}
+.tl-day{display:block;font-family:var(--font-text);font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.tl-soon{display:block;font-family:var(--font-text);font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--brick)}
+.tl-sub{display:block;font-style:italic;font-size:.6em;color:var(--ink-3);margin-top:4px}
+.book-list{display:grid;gap:96px;max-width:820px}
+
+/* ---- contact form: filled fields, no borders (DS TextInput) ---- */
+.contact{padding-top:112px}
+.contact-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 24px;max-width:760px}
+.contact-form label{display:flex;flex-direction:column;gap:8px}
+.contact-form label span{font:var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.contact-form input,.contact-form textarea{font:17px/1.5 var(--font-text);color:var(--ink);border:0;border-radius:0;padding:12px 14px;background:var(--soft-linen);outline:none;transition:background var(--dur-fast) var(--ease-page)}
+.contact-form input:focus,.contact-form textarea:focus{background:var(--dust-grey)}
+.contact-form textarea{resize:vertical}
+.cf-wide{grid-column:1/-1}
+.cf-end{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap}
+.contact-form button.btn{border:0;background:none;padding:0;cursor:pointer}
+.cf-note{font-family:var(--font-text);font-style:italic;font-size:14px;color:var(--ink-3)}
+.cf-note a{color:inherit}
 .book-soon{display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:center}
 .book-cover--blank{--w:clamp(140px,16vw,190px);--depth:18px;--spine:var(--gunmetal-2)}
 .blank-cover{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:2/3;padding:14% 11%;background:var(--gunmetal);color:var(--soft-linen);box-shadow:var(--shadow-book)}
@@ -189,10 +204,6 @@ html:has(.bio-dialog[open]){overflow:hidden}
 .footer-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;font-family:var(--font-label);font-size:13px;color:var(--ink-3)}
 
 /* ---- next issue: the site changes once a month, the footer says when ---- */
-.next-issue{text-align:center;padding-top:112px}
-.next-issue-label{margin:0;font:var(--caps);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
-.next-issue-when{margin:16px 0 14px;font-family:var(--font-text);font-size:clamp(36px,4.4vw,56px);line-height:1.05;letter-spacing:-.015em;color:var(--ink)}
-.next-issue-note{margin:0 auto;max-width:46ch;font-family:var(--font-text);font-style:italic;font-size:17px;line-height:1.5;color:var(--ink-3);text-wrap:balance}
 
 /* ---- page head (section pages) ---- */
 .page-head{padding-top:clamp(40px,6vw,72px);padding-bottom:40px}
@@ -263,8 +274,6 @@ html:has(.bio-dialog[open]){overflow:hidden}
   .project-band .section:last-child{padding-bottom:72px}
   .tl-item{grid-template-columns:minmax(0,1fr);gap:8px}
   .tl-when{position:static;display:flex;align-items:baseline;gap:14px}
-  .tl-year{font-size:36px}
-  .tl-date{margin-top:0}
   .timeline{gap:64px}
   .book-soon{grid-template-columns:minmax(0,1fr);gap:28px}
   .shelf{grid-template-columns:minmax(0,1fr);gap:56px}
@@ -278,6 +287,7 @@ html:has(.bio-dialog[open]){overflow:hidden}
   .essay-body>p:first-child::first-letter{font-size:72px}
   .page-standfirst{font-size:21px}
   .site-footer{padding-top:72px}
-  .next-issue{padding-top:88px}
+  .contact{padding-top:80px}
+  .contact-form{grid-template-columns:minmax(0,1fr)}
   .author-band{padding:56px 0}
 }

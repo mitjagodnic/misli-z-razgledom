@@ -1,5 +1,5 @@
 // Misli z razgledom — the few bits that need a script:
-// phone menu, live dateline, next-issue countdown, biography pop-up, shelf filter.
+// menu, live dateline, contact form, biography pop-up.
 (function () {
   // texts the script writes, per page language (<html lang>)
   var en = document.documentElement.lang === 'en';
@@ -42,22 +42,16 @@
     setInterval(tick, 15000);
   }
 
-  // Next issue: the site changes about once a month, so the footer counts the days
-  var next = document.querySelector('[data-naslednja]');
-  if (next) {
-    var d = next.getAttribute('data-naslednja').split('-');
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var n = Math.round((new Date(+d[0], +d[1] - 1, +d[2]) - today) / 86400000);
-    var when = next.querySelector('[data-kdaj]');
-    var then = next.querySelector('[data-potem]');
-    if (n > 1) when.textContent = T.days(n);
-    else if (n === 1) when.textContent = T.tomorrow;
-    else if (n === 0) when.textContent = T.today;
-    else {
-      when.textContent = T.soon;
-      if (then) then.textContent = T.onItsWay;
-    }
+  // Contact form: for now it opens the visitor's email program, addressed to Uroš
+  var form = document.querySelector('[data-kontakt]');
+  if (form) {
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var f = form.elements;
+      var body = f.sporocilo.value + '\n\n— ' + f.ime.value + ' (' + f.eposta.value + ')';
+      window.location.href = 'mailto:' + form.getAttribute('data-kontakt') +
+        '?subject=' + encodeURIComponent(form.getAttribute('data-zadeva')) + '&body=' + encodeURIComponent(body);
+    });
   }
 
   // "Več o meni" opens the biography as a pop-up (Esc, Zapri or a click outside closes it)
