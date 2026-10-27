@@ -1,0 +1,167 @@
+# Urednik strani Café Goričan (Sveltia CMS) — samo za Uroša.
+# Vsaka shranjena sprememba se zapiše v GitHub, stran pa se v 1–2 minutah zgradi in objavi sama.
+backend:
+  name: github
+  repo: mitjagodnic/misli-z-razgledom
+  branch: main
+  commit_messages:
+    create: "Nova vsebina: {{collection}} »{{slug}}«"
+    update: "Posodobitev: {{collection}} »{{slug}}«"
+    delete: "Izbris: {{collection}} »{{slug}}«"
+    uploadMedia: "Nova slika: {{path}}"
+    deleteMedia: "Izbris slike: {{path}}"
+
+site_url: https://mitjagodnic.github.io/misli-z-razgledom
+display_url: https://mitjagodnic.github.io/misli-z-razgledom
+
+media_folder: vsebina/slike
+public_folder: /slike
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2000
+          height: 2000
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Slovenščina je glavni jezik; angleško besedilo vpišeš v zavihku EN. Če angleškega naslova ni, objave na angleški strani ni.
+i18n:
+  structure: multiple_folders
+  locales: [sl, en]
+  default_locale: sl
+
+collections:
+  # ------------------------------------------------------------ OBJAVE
+  - name: objave
+    label: Walking the Myth
+    label_singular: objavo
+    description: Vse objave — eseji, zapisi in priporočila. Na naslovnici se pokažejo zadnji esej ali zapis in zadnja tri priporočila.
+    folder: vsebina/objave
+    format: json
+    i18n: true
+    create: true
+    delete: true
+    slug: "{{naslov}}"
+    identifier_field: naslov
+    summary: "{{naslov}} · {{vrsta}} · {{datum}}"
+    sortable_fields:
+      fields: [datum, naslov]
+      default: { field: datum, direction: descending }
+    preview_path: "walking-the-myth/{{slug}}/"
+    thumbnail: slika
+    fields:
+      - { name: naslov, label: Naslov, widget: string, i18n: true }
+      - name: vrsta
+        label: Vrsta
+        widget: select
+        i18n: duplicate
+        options:
+          - { label: Esej, value: esej }
+          - { label: Zapis, value: zapis }
+          - { label: Priporočilo, value: priporocilo }
+      - { name: datum, label: Datum objave, widget: datetime, format: "YYYY-MM-DDTHH:mm", default: "{{now}}", i18n: duplicate }
+      - { name: povzetek, label: Povzetek, hint: "Dva, trije stavki, ki se pokažejo na naslovnici in v časovnici.", widget: text, i18n: true }
+      - { name: besedilo, label: Besedilo (za esej in zapis), hint: "Prazna vrstica začne nov odstavek. Vrstica z > na začetku je izpostavljen citat.", widget: markdown, required: false, i18n: true, buttons: [bold, italic, link, quote, heading-two], editor_components: [], modes: [rich_text] }
+      - name: kategorija
+        label: Kategorija (za priporočilo)
+        widget: select
+        required: false
+        i18n: duplicate
+        options: [Knjiga, Film, Glasba, Razstava, Teater, Kavarna, Mesto, Arhitektura]
+      - { name: podnaslov, label: Podnaslov (avtor, režiser, mesto …), widget: string, required: false, i18n: true }
+      - { name: slika, label: Slika (za priporočilo), widget: image, required: false, choose_url: false, i18n: duplicate }
+      - name: oblika
+        label: Kako naj se slika pokaže
+        widget: select
+        required: false
+        i18n: duplicate
+        options:
+          - { label: Platnica knjige na sredini, value: knjiga }
+          - { label: Filmski plakat na sredini, value: plakat }
+          - { label: Cela fotografija (ne obreži), value: fotografija }
+          - { label: Fotografija čez celo polje, value: polje }
+      - { name: povezava, label: Povezava (stran knjige, IMDb, kavarne …), widget: string, required: false, i18n: duplicate }
+      - { name: slika_avtor, label: Avtor fotografije, widget: string, required: false, i18n: duplicate }
+      - { name: slika_vir, label: Povezava do vira fotografije, widget: string, required: false, i18n: duplicate }
+      - { name: slika_licenca, label: Licenca fotografije, widget: string, required: false, i18n: duplicate }
+      - { name: slika_licenca_url, label: Povezava do licence, widget: string, required: false, i18n: duplicate }
+      - { name: osnutek, label: Osnutek (ni prikazano na strani), widget: boolean, default: false, required: false, i18n: duplicate }
+
+  # ------------------------------------------------------------ KNJIGE
+  - name: knjige
+    label: Knjige
+    label_singular: knjigo
+    description: Izdane knjige. Prva knjiga se pokaže tudi na naslovnici.
+    folder: vsebina/knjige
+    format: json
+    i18n: true
+    create: true
+    delete: true
+    slug: "{{naslov}}"
+    identifier_field: naslov
+    preview_path: "knjige/{{slug}}/"
+    thumbnail: platnica
+    fields:
+      - { name: naslov, label: Naslov, widget: string, i18n: true }
+      - { name: platnica, label: Platnica, widget: image, choose_url: false, i18n: duplicate }
+      - { name: hrbet, label: Barva hrbta knjige, hint: "Npr. #C9A94A", widget: string, required: false, i18n: duplicate }
+      - { name: kratko, label: Kratek opis (naslovnica), widget: text, i18n: true }
+      - { name: opis, label: Daljši opis (stran knjige), widget: markdown, i18n: true, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+      - { name: podatki, label: Podatki (založba, strani, ISBN …), widget: list, required: false, i18n: true, field: { name: vrstica, label: Vrstica, widget: string } }
+      - { name: kupi, label: Povezava za nakup, widget: string, required: false, i18n: duplicate }
+
+  # ------------------------------------------------------------ STRANI
+  - name: strani
+    label: Besedila strani
+    description: Naslov strani, besedilo o avtorju in projekt Walking the Myth.
+    i18n: true
+    files:
+      - name: stran
+        label: Naslov in o avtorju
+        file: vsebina/{{locale}}/stran.json
+        format: json
+        i18n: true
+        fields:
+          - { name: naslov, label: Ime strani, widget: string, i18n: true }
+          - { name: podnaslov, label: Podnaslov, widget: string, i18n: true }
+          - { name: ime, label: Ime avtorja, widget: string, i18n: duplicate }
+          - { name: kraj, label: Kraj, widget: string, i18n: duplicate }
+          - { name: email, label: E-pošta za kontaktni obrazec, widget: string, i18n: duplicate }
+          - name: avtor
+            label: O avtorju
+            widget: object
+            i18n: true
+            fields:
+              - { name: portret, label: Portret, widget: image, choose_url: false, i18n: duplicate }
+              - { name: podpis, label: Podpis, widget: image, choose_url: false, i18n: duplicate }
+              - { name: citat, label: Citat, widget: string, i18n: true }
+              - { name: o_meni, label: Kratko o meni, widget: text, i18n: true }
+      - name: projekt
+        label: Walking the Myth (projekt)
+        file: vsebina/{{locale}}/projekt.json
+        format: json
+        i18n: true
+        fields:
+          - { name: naslov, label: Ime projekta, widget: string, i18n: true }
+          - { name: opis, label: Kratek opis (naslovnica), widget: text, i18n: true }
+          - { name: uvod, label: Uvod (stran projekta), widget: text, i18n: true }
+          - { name: knjiga, label: Besedilo pri knjigi »kmalu«, widget: string, i18n: true }
+          - { name: slika, label: Fotografija, widget: image, choose_url: false, i18n: duplicate }
+          - { name: slika_avtor, label: Avtor fotografije, widget: string, required: false, i18n: duplicate }
+      - name: zivljenjepis
+        label: Življenjepis
+        file: vsebina/{{locale}}/zivljenjepis.json
+        format: json
+        i18n: true
+        fields:
+          - { name: naslov, label: Naslov, widget: string, i18n: true }
+          - { name: besedilo, label: Besedilo, widget: markdown, i18n: true, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }

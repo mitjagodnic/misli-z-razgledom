@@ -1,0 +1,15 @@
+{
+  "naslov": "Café Jelinek",
+  "vrsta": "priporocilo",
+  "kategorija": "Kavarna",
+  "datum": "2026-10-19T10:03",
+  "podnaslov": "Dunaj",
+  "slika": "/slike/cafe-jelinek.jpg",
+  "oblika": "fotografija",
+  "slika_avtor": "Mathias Hielscher",
+  "slika_vir": "https://www.flickr.com/photos/matzehielscher/4144051198/",
+  "slika_licenca": "CC BY-NC-ND 2.0",
+  "slika_licenca_url": "https://creativecommons.org/licenses/by-nc-nd/2.0/",
+  "povezava": "https://cafejelinek.steman.at/",
+  "povzetek": "Stara kavarna z novinami, lesom in časom, ki te ne preganja."
+}

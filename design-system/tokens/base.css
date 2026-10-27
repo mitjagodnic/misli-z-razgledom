@@ -1,0 +1,9 @@
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font-family:var(--font-text);font-size:var(--fs-body);line-height:var(--lh-body)}
+h1,h2,h3,h4{font-family:var(--font-text);font-weight:400;letter-spacing:var(--track-head);color:var(--text-strong);margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:var(--text-link);text-decoration:none;transition:color var(--dur-fast) var(--ease-page)}
+a:hover{color:var(--text-link-hover)}
+a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+::selection{background:var(--tea-green);color:var(--gunmetal)}
+img{display:block;max-width:100%}

@@ -1,0 +1,20 @@
+:root{
+/* palette */
+--gunmetal:#2E3532;--dark-amaranth:#8B2635;--soft-linen:#E0E2DB;--dust-grey:#D2D4C8;--tea-green:#D3EFBD;
+/* derived */
+--amaranth-deep:#6E1D29;--gunmetal-2:#454D49;--linen-light:#ECEEE8;
+/* role names used by components (aliases) */
+--carbon:var(--gunmetal);--brick:var(--dark-amaranth);--brick-deep:var(--amaranth-deep);
+--snow:var(--soft-linen);--alabaster:var(--dust-grey);--highlight:var(--tea-green);
+/* paper (grounds) */
+--paper:var(--soft-linen);--paper-2:var(--dust-grey);--paper-3:#C3C6B8;--paper-white:var(--linen-light);
+/* ink (text ramp from gunmetal) */
+--ink:var(--gunmetal);--ink-2:#3E4642;--ink-3:#57605B;--ink-4:#838A85;
+
+/* semantic */
+--surface-page:var(--linen-light);--surface-raised:var(--linen-light);--surface-sunken:var(--linen-light);--surface-plate:var(--soft-linen);--surface-inset:var(--soft-linen);--surface-inverse:var(--gunmetal);--surface-highlight:var(--tea-green);
+--text-strong:var(--ink);--text-body:var(--ink-2);--text-muted:var(--ink-3);--text-faint:var(--ink-4);--text-inverse:var(--soft-linen);--text-inverse-muted:var(--dust-grey);
+--text-link:var(--dark-amaranth);--text-link-hover:var(--ink);
+--accent:var(--dark-amaranth);--accent-2:var(--tea-green);
+--focus-ring:0 0 0 2px var(--paper),0 0 0 4px var(--dark-amaranth);
+}

@@ -1,0 +1,14 @@
+# built site and local leftovers
+stran/
+objava/
+*.tar
+.DS_Store
+.claude/
+__pycache__/
+# only the design-system tokens are needed for the build
+design-system/*
+!design-system/tokens/
+# files dropped into vsebina/ by hand
+vsebina/*.png
+vsebina/*.avif
+vsebina/*.jpg

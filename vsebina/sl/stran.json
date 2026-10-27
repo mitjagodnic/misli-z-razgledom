@@ -1,0 +1,14 @@
+{
+  "ime": "Uroš Goričan",
+  "naslov": "Café Goričan",
+  "podnaslov": "Eseji, knjige in drugi razlogi za postanek.",
+  "kraj": "Ljubljana",
+  "leto": 2026,
+  "email": "uros@dobrezgodbe.si",
+  "avtor": {
+    "portret": "/slike/portret-uros.jpg",
+    "podpis": "/slike/signature.png",
+    "citat": "Verjamem, da je za dober pogled včasih potrebna razdalja.",
+    "o_meni": "Pišem zgodbe, ki poskušajo razumeti, kaj ostane, ko se svet spremeni. Rad imam mesta, kavarne, vlake, knjige in pogovore, ki nikamor ne hitijo."
+  }
+}
