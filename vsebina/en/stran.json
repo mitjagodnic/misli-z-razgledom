@@ -1,6 +1,13 @@
 {
+  "naslov": "Café Goríčan",
   "podnaslov": "Essays, books and other reasons to stop by.",
+  "ime": "Uroš Goričan",
+  "kraj": "Ljubljana",
+  "email": "gorican@gmail.com",
+  "web3forms_kljuc": "",
   "avtor": {
+    "portret": "/slike/portret-uros.jpg",
+    "podpis": "/slike/signature.png",
     "citat": "I believe that a good view sometimes needs distance.",
     "o_meni": "I write stories that try to understand what remains when the world changes. I love cities, cafés, trains, books and conversations that are in no hurry."
   }
