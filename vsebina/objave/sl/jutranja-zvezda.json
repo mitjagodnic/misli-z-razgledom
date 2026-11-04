@@ -1,11 +1,18 @@
 {
-  "naslov": "Karl Ove Knausgård",
+  "naslov": "Gloria",
   "vrsta": "priporocilo",
-  "kategorija": "Knjiga",
-  "datum": "2026-10-19T10:01",
-  "podnaslov": "Jutranja zvezda",
-  "slika": "/slike/knausgard-the-morning-star.jpg",
+  "datum": "2026-11-04T14:33",
+  "povzetek": "Minimalistična vohunska serija, postavljena na Portugalsko v šestdesetih letih, v čas Salazarjeve diktature, raziskuje tanko mejo med zvestobo in izdajo.",
+  "besedilo": "",
+  "kategorija": "Film",
+  "podnaslov": "Netflix",
+  "slika": "/slike/img_2969.webp",
   "oblika": "knjiga",
-  "povezava": "https://www.penguinrandomhouse.com/books/536264/the-morning-star-by-karl-ove-knausgaard/9780399563447/",
-  "povzetek": "O življenju, pisanju in tem, kar ostane, ko vse drugo izgine."
+  "povezava": "https://www.netflix.com/us/title/81073977?s=i&trkid=13747225&shareType=Title&shareUuid=5CB6E918-4BDA-45C7-86B0-DA665E07EA83&trg=cp&unifiedEntityIdEncoded=Video%3A81073977&vlang=en",
+  "slika_avtor": "",
+  "slika_vir": "",
+  "slika_licenca": "",
+  "slika_licenca_url": "",
+  "osnutek": false,
+  "prevod_ui": false
 }
