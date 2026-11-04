@@ -1,11 +1,18 @@
 {
-  "naslov": "Perfect Days",
+  "naslov": "Wir sind am Leben",
   "vrsta": "priporocilo",
-  "kategorija": "Film",
-  "datum": "2026-10-19T10:02",
-  "podnaslov": "Wim Wenders",
-  "slika": "/slike/perfect-days-plakat.jpg",
+  "datum": "2026-11-04T13:52",
+  "povzetek": "Muzikal o Berlinu v devetdesetih letih, po padcu berlinskega zidu. Zgodba o tem, koliko je vredna svoboda (in kakšna je njena ceno) v mestu, ki se nenehno spreminja.",
+  "besedilo": "",
+  "kategorija": "Teater",
+  "podnaslov": "Peter Plate & Ulf Leo Sommer",
+  "slika": "/slike/img_2967.webp",
   "oblika": "plakat",
-  "povezava": "https://www.imdb.com/title/tt27503384/",
-  "povzetek": "Film o lepoti vsakdanjosti in o tem, kako malo včasih potrebujemo."
+  "povezava": "https://www.stage-entertainment.de/musicals-shows/wir-sind-am-leben-berlin",
+  "slika_avtor": "",
+  "slika_vir": "",
+  "slika_licenca": "",
+  "slika_licenca_url": "",
+  "osnutek": false,
+  "prevod_ui": false
 }
