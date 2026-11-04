@@ -1,4 +1,18 @@
 {
-  "podnaslov": "Vienna",
-  "povzetek": "An old café of newspapers, wood and time that never rushes you."
+  "naslov": "Concrete Utopia",
+  "vrsta": "priporocilo",
+  "datum": "2026-11-04T14:17",
+  "povzetek": "When the West discovers the alluer of Yugoslav brutalist architecture – a film from the exhibition at New York’s Museum of Modern Art (MoMA).",
+  "besedilo": "",
+  "kategorija": "Arhitektura",
+  "podnaslov": "MoMA",
+  "slika": "/slike/img_2968.webp",
+  "oblika": "fotografija",
+  "povezava": "https://youtu.be/U16ku9EBvt8?is=-8KDtQ84LFuziK8R",
+  "slika_avtor": "Daniela Stefanoska",
+  "slika_vir": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D0%B8%D1%83%D0%BC,%D0%9A%D1%80%D1%83%D1%88%D0%B5%D0%B2%D0%BE.jpg",
+  "slika_licenca": "CC BY-SA 3.0",
+  "slika_licenca_url": "https://creativecommons.org/licenses/by-sa/3.0/⁠",
+  "osnutek": false,
+  "prevod_ui": false
 }
