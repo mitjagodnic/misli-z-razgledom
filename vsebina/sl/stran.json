@@ -1,13 +1,13 @@
 {
-  "naslov": "Café Goríčan",
+  "naslov": "Café Gorîčan",
   "podnaslov": "Zapisi, knjige in drugi razlogi za postanek.",
   "ime": "Uroš Goričan",
   "kraj": "Ljubljana",
   "email": "gorican@gmail.com",
   "web3forms_kljuc": "",
   "avtor": {
-    "portret": "/slike/portret-uros.jpg",
-    "podpis": "/slike/signature.png",
+    "portret": "/slike/img_2952.webp",
+    "podpis": "/slike/uros-gorican-podpis.webp",
     "citat": "Verjamem, da je za dober pogled včasih potrebna razdalja.",
     "o_meni": "Pišem zgodbe, ki poskušajo razumeti, kaj ostane, ko se svet spremeni. Rad imam mesta, kavarne, vlake, knjige in pogovore, ki nikamor ne hitijo."
   },
